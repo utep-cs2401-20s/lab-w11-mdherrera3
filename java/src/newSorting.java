@@ -1,9 +1,10 @@
 public class newSorting {
     public void newSorting(int [] array, int size){
-        int start = 0;
-        int end = array.length - 1;
+
         //rather than calling a new sort jut go through the method
         if(array.length <= size){
+            int start = 0;
+            int end = array.length - 1;
             quickSort(array, start,end);
         }
         else{
@@ -15,7 +16,7 @@ public class newSorting {
                 leftHalf[i] = array[i];
             }
             for (int i = 0; i < rightHalf.length; i++) {
-                rightHalf[i] = array[i];
+                rightHalf[i] = array[mid + i];
             }
             newSorting(leftHalf,size);
             newSorting(rightHalf,size);
@@ -26,7 +27,7 @@ public class newSorting {
 
     public void quickSort(int[] array, int start, int end){
 
-        if (start < end) {
+        if (start < end && start >= 0) {
             int index = part(array, start, end);
             //left
             quickSort(array,start,(index - 1));
@@ -37,21 +38,22 @@ public class newSorting {
     public int part(int []array, int start, int end) {
         int pivot = array[start];
         // going through the list
-        for (int i = start; i < end - 1; i++) {
+        for (int i = start; i < end + 1; i++) {
             //goes through and sees where to find the position of the array
             // and where to place the pivot
             if (array[i] < pivot) {
-                start++;
                 int temp = pivot;
                 pivot = array[i];
                 array[i] = temp;
-            } else {
-                int temp = array[end + 1];
-                array[end + 1] = array[start];
+                start++;
+            } else if(array[i] > pivot){
+                int temp = pivot;
+                pivot = array[start];
                 array[start] = temp;
+                start++;
             }
         }
-        return end + 1;
+        return end;
     }
     //may need helper method for this
     public void mergeSortedHalves(int[] array, int[] left, int[] right){
@@ -66,6 +68,7 @@ public class newSorting {
                 continue;
             }
             if (rightPoint == right.length) {
+                array[i] = left[leftPoint];
                 leftPoint++;
                 continue;
             }

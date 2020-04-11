@@ -12,7 +12,7 @@ public class newSortingTester {
         newSorting test = new newSorting();
         test.newSorting(given,2);
         assertArrayEquals(exp, given);
-        //expected output was not given, rather I was given a array index out of bounds
+        //expected output was 2,2,3 and is supposed to bet 1,2,3
         //testing the values to see if it runs properly
     }
     @Test
@@ -23,7 +23,7 @@ public class newSortingTester {
         newSorting test = new newSorting();
         test.newSorting(given,3);
         assertArrayEquals(exp, given);
-        //expected output was not given, rather I was given a array index out of bounds
+        //expected output was the 2,2,3
         //wanted to see if it would just not call the part method but it still call it
     }
     @Test
@@ -34,7 +34,7 @@ public class newSortingTester {
         newSorting test = new newSorting();
         test.newSorting(given,2);
         assertArrayEquals(exp, given);
-        //expected output was not given, rather I was given stack overflow error
+        //expected output was -3,-1,-1
         //wanted to see if the negative values would be shown
     }
     @Test
