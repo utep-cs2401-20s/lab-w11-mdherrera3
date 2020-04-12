@@ -28,6 +28,7 @@ public class newSorting {
     public void quickSort(int[] array, int start, int end){
 
         if (start < end && start >= 0) {
+            //recursive calling
             int index = part(array, start, end);
             //left
             quickSort(array,start,(index - 1));
@@ -42,13 +43,14 @@ public class newSorting {
             //goes through and sees where to find the position of the array
             // and where to place the pivot
             if (array[i] < pivot) {
+                int temp = array[i];
+                array[i] = pivot;
+                array[start] = temp;
+                start++;
+            }
+            else if(array[i] > pivot){
                 int temp = pivot;
                 pivot = array[i];
-                array[i] = temp;
-                start++;
-            } else if(array[i] > pivot){
-                int temp = pivot;
-                pivot = array[start];
                 array[start] = temp;
                 start++;
             }
@@ -75,10 +77,12 @@ public class newSorting {
             if (left[leftPoint] < right[rightPoint]) {
                 array[i] = left[leftPoint];
                 leftPoint++;
-            } else if (left[leftPoint] == right[rightPoint]) {
+            }
+            else if (left[leftPoint] == right[rightPoint]) {
                 array[i] = left[leftPoint];
                 leftPoint++;
-            } else {
+            }
+            else {
                 array[i] = right[rightPoint];
                 rightPoint++;
             }
